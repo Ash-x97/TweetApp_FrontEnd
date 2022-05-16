@@ -1,0 +1,18 @@
+input.ng-invalid.ng-touched{
+    border:1px solid red;
+}
+
+.warning{
+    color:orange;
+}
+
+.error{
+    color:red;
+}
+
+.verify-link{
+    font-weight: 500;
+}
+.verify-link:hover{
+    cursor: pointer;
+}

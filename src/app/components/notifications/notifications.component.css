@@ -1,0 +1,53 @@
+.backdrop{
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.5);
+    z-index:50;
+}
+
+.cp-component{
+    position:fixed;
+    top:20vh;    
+    left:20vw;
+    width:30vw;        
+    z-index:100;
+    background:rgb(230, 251, 251);
+    box-shadow:0 2px 8px rgba(0,0,0,0.26);
+}
+
+.close-btn{
+    background:transparent;
+    border:none;
+    font-size: x-large;
+}
+
+.seen-noti{
+   background-color:rgb(226, 226, 226);
+}
+
+.seen-noti:hover{
+    background-color:rgb(226, 226, 226);
+    cursor: not-allowed;
+ }
+
+.noti-link:hover{
+    text-decoration:none;
+    cursor: pointer;
+}
+
+tr{
+    background-color: white;
+    color:black;
+    height:15%;
+}
+
+tr:hover{
+    background-color: rgba(0, 234, 255, 0.10);
+}
+
+th{
+    border:none;
+}

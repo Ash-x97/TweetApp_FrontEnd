@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/home">TweetApp</a>
+        <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" [ngClass]="{show:isNavBarOpen}" *ngIf="isLoggedIn">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/tweets" routerLinkActive="active">Tweets </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+              </li>   
+         
+            </ul>  
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" *ngIf="username.length>0">
+                    <a href="" class="nav-link disabled">{{username}}</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-info bi-box-arrow-right" (click)="onLogout()" >Logout</button>
+                </li>
+            </ul>          
+        </div>
+
+        <div class="collapse navbar-collapse" [ngClass]="{show:isNavBarOpen}" *ngIf="!isLoggedIn">  
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+                </li>
+            </ul>          
+        </div>
+    </div>          
+</nav>

@@ -1,0 +1,119 @@
+<div class="card mx-4 mx-md-5 shadow-5-strong">
+    <div class="card-body py-5 px-md-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Register</h2>
+          <p class="help-block warning">All fields are required</p>
+          <div *ngIf="isLoading">
+              <app-loading-spinner></app-loading-spinner>
+          </div>
+          <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">              
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <input type="text" id="fname" class="form-control" formControlName="firstName"/>
+                  <label class="form-label" for="fname">First name</label> &nbsp;
+                  <span class="help-block error" *ngIf="signupForm.get('firstName')?.invalid && signupForm.get('firstName')?.touched">First name is required</span>                                  
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <input type="text" id="lname" class="form-control" formControlName="lastName"/>
+                  <label class="form-label" for="lname">Last name</label> &nbsp;
+                  <span class="help-block error" *ngIf="signupForm.get('lastName')?.invalid && signupForm.get('lastName')?.touched">Last name is required</span>
+                </div>
+              </div>
+            </div>
+            <!-- username input -->
+            <div class="form-outline mb-4">
+                <input type="text" id="username" class="form-control" formControlName="loginId"  placeholder="valid : 5 - 10 characters"/>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="form-label" for="username">Username</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="help-block error" *ngIf="signupForm.get('loginId')?.invalid && signupForm.get('loginId')?.touched && !signupForm.get('loginId')?.dirty">Username required</span>
+                        <span class="help-block error" *ngIf="signupForm.get('loginId')?.invalid && signupForm.get('loginId')?.dirty">Invalid username</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input type="email" id="email" class="form-control" formControlName="email" placeholder="valid : example@example.com"/>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="form-label" for="email">Email address</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="help-block error" *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched && !signupForm.get('email')?.dirty">Email address required</span>
+                        <span class="help-block error" *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.dirty">Invalid email address</span>
+                    </div>
+                </div>
+            </div>
+            <!-- contactnumber input -->
+            <div class="form-outline mb-4">
+                <input type="text" id="cnumber" class="form-control" formControlName="contactNumber" placeholder="valid : 10-digit mobile number"/>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="form-label" for="cnumber">Contact Number</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="help-block error" *ngIf="signupForm.get('contactNumber')?.invalid && signupForm.get('contactNumber')?.touched && !signupForm.get('contactNumber')?.dirty">Contact number required</span>
+                        <span class="help-block error" *ngIf="signupForm.get('contactNumber')?.invalid && signupForm.get('contactNumber')?.dirty">Invalid contact number</span>
+                    </div>
+                </div>
+              </div>
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <input type="password" id="password" class="form-control" formControlName="password" placeholder="valid : 6 - 18 characters" />
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="form-label" for="password">Password</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="help-block error" *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched && !signupForm.get('password')?.dirty">password required</span>
+                        <span class="help-block error" *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.dirty" >Invalid password</span>
+                    </div>
+                </div>
+            </div> 
+            <!--Confirm Password input -->
+            <div class="form-outline mb-4">
+                <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" placeholder="valid : same as password field" />
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="form-label" for="confirmPassword">Confirm Password</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="help-block error" *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched && !signupForm.get('confirmPassword')?.dirty">Confirm password required</span>
+                        <span class="help-block error" *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.dirty" >Invalid password</span>
+                    </div>
+                </div>
+            </div>  
+            <!-- Profile pic chooser -->
+            <div class="mb-4">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <label class="form-label" for="avatar">Profile Picture:</label> <br>                        
+                        <input class="file-chooser" type="file" name="file" id="avatar" (change)="onFileChanged($event)" formControlName="avatar" />  &nbsp; 
+                    </div>
+                    <div class="col-sm-7">
+                        <img [src]="base64Image" class="display-image"  *ngIf="!invalidFile">  <br>
+                        <span class="help-block error" *ngIf="invalidFile">Please choose either .jpeg or .png formats</span>   
+                    </div>
+                </div>                                         
+            </div>    
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-info btn-block mb-4" [disabled]="signupForm.invalid">
+              Submit
+            </button> 
+
+            <span class="help-block error" *ngIf="!isPasswordMatch">Passwords not matching !</span>
+            <span class="help-block error" *ngIf="!isContactNumberValid">Contact number only takes numeric characters !</span>
+            <span class="help-block error" *ngIf="serverErrorResponse">{{serverErrorResponse}}</span>            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

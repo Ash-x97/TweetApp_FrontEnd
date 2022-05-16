@@ -1,0 +1,44 @@
+<div class="container" *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+</div>
+
+<div class="jumbotron" *ngIf="!isLoading && serverErrorResponse">
+    <span class="help-block text-danger font-weight-bold"> {{ serverErrorResponse }} </span>
+</div>
+
+<div class="container" *ngIf="!isLoading && !serverErrorResponse ">
+    <div class="row" *ngIf="renderModel.length === 0">No Tweets to render</div>      
+    <div class="row" *ngIf="renderModel.length>0 && !withModal">        
+        <div class="col-md-7 p-0 pb-5">
+            <router-outlet *ngIf="isItemSelected"></router-outlet>
+        </div>   
+        <div class="col-md-5 tweets-view">
+            <app-tweet-render  
+                *ngFor="let tweet of renderModel.reverse()"
+                [tweet]="tweet" 
+                (userSelected)="onSelectUser(tweet.loginId)" 
+                (tweetSelected)="onSelectTweet(tweet.tweetId)">
+            </app-tweet-render>
+        </div>     
+    </div>
+    <div class="row ml-auto mr-auto" *ngIf="renderModel.length>0 && withModal" style="width:100%">
+        <div class="col-md-12" style=" width:100%;">
+            <app-tweet-render                
+                *ngFor="let tweet of renderModel.reverse()"
+                [tweet]="tweet" 
+                (userSelected)="onSelectUser(tweet.loginId)" 
+                (tweetSelected)="onSelectTweet(tweet.tweetId)">                
+            </app-tweet-render>
+
+            <div class="backdrop" *ngIf="isModalOpen">
+                <div class="modal-component">
+                    <app-tweet-detail></app-tweet-detail>
+                    <div class="mt-2" style="text-align: center;">
+                        <button (click)="onModalClose()" class="btn btn-info">Back</button>
+                    </div>
+                </div>                
+            </div>            
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,31 @@
+.backdrop{
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.5);
+    z-index:1;
+}
+
+.modal-component{
+    border-radius:5%;
+    position:fixed;
+    top:20vh;    
+    left:20vw;
+    width:60vw;
+    padding:16px;    
+    z-index:2;
+    background:rgb(230, 251, 251);
+    box-shadow:0 2px 8px rgba(0,0,0,0.26);
+}
+
+
+.tweets-view{
+    height:85vh; 
+    overflow-y: scroll;
+}
+
+.tweets-view::-webkit-scrollbar {
+    display: none; 
+}

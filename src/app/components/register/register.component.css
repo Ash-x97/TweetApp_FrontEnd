@@ -1,0 +1,21 @@
+.display-image{
+    border: 1px solid black;
+    border-radius: 20%;
+    max-width:10vw;
+    max-height:10vh;
+}
+.file-chooser{
+    border: 1px solid black;
+    max-width:100%;
+}
+
+.warning{
+    color:orange;
+}
+.error{
+    color: red;
+}
+
+input.ng-invalid.ng-touched{
+    border:1px solid red;
+}

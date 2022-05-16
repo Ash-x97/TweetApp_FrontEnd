@@ -1,0 +1,33 @@
+.warning{
+    color:orange;
+}
+
+.error{
+    color: red;
+}
+
+.server-error{
+    font-weight: 500;
+    color:darkred;
+    font-size: large;
+}
+
+.timer{
+    color:cadetblue;
+    font-size:medium;
+    font-weight:normal;
+}
+#minutes,#seconds{   
+    color:black; 
+    font-size:large;
+    font-weight:bold;
+}
+
+.verify-link{
+    color:darkblue;
+    font-weight: bold;
+}
+
+.verify-link:hover{
+    cursor:pointer ;
+}

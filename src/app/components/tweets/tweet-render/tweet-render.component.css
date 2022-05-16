@@ -1,0 +1,16 @@
+.selected-item{
+    background-color: rgba(0, 234, 255, 0.10);
+}
+
+.user-link:hover{
+    text-decoration: none;
+}
+
+.list-group-item{
+    height:12vh;
+}
+
+.img-fluid{
+    height:5vh;
+    width: 3vw;
+}

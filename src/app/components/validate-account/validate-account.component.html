@@ -1,0 +1,40 @@
+<div class="card mx-4 mx-md-5 shadow-5-strong">
+    <div class="card-body py-5 px-md-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Activate Account</h2>          
+          <div class="row" *ngIf="isRedirected">
+              <div class="col-sm-12 text-success" *ngIf="!stopTimer">Please enter the One Time Password (OTP) send to your email id.</div>
+              <div class="col-sm-12 timer" *ngIf="(timeLeft$ | async) as t">
+                OTP expires in : 
+                <span id="minutes"> {{ t.minutesLeft }} </span>Min
+	              <span id="seconds"> {{ t.secondsLeft }} </span>Seconds
+              </div>
+          </div><br>
+          <div *ngIf="isLoading">
+            <app-loading-spinner></app-loading-spinner>
+          </div>
+          <span class="alert-block text-warning text-lg-center" *ngIf="!isRedirected">Not allowed to navigate to this page by URL !! <br></span>
+          <form [formGroup]="otpForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading && isRedirected && !stopTimer" >           
+            <div class="form-outline mb-4" >
+                <input type="text" id="otp" class="form-control" formControlName="otp"  placeholder="6-digit OTP" />
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="form-label" for="username">OTP</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="help-block error" *ngIf="otpForm.get('otp')?.invalid && otpForm.get('otp')?.touched && !otpForm.get('otp')?.dirty">OTP required</span>
+                        <span class="help-block error" *ngIf="otpForm.get('otp')?.invalid && otpForm.get('otp')?.dirty">Invalid OTP</span>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info btn-block mb-4">
+              Activate
+            </button> 
+          </form>
+          <span class="alert-block error" *ngIf="stopTimer && isRedirected">OTP timed out. please re-initiate email verification by clicking <a class="verify-link" (click)="verifyEmail()">here</a>!!</span><br>
+          <span class="help-block error server-error" *ngIf="serverErrorResponse">{{ serverErrorResponse }}</span>
+        </div>
+      </div>
+    </div>
+  </div>

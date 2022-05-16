@@ -1,0 +1,36 @@
+.container{
+    margin-top:10%;
+}
+
+.display-image{    
+    border: 1px solid black;
+    border-radius: 10%;
+    max-width:50%;
+    max-height:50%;
+}
+
+td{
+    border-top:0px;
+}
+
+.tweet-form{
+    padding:3%;    
+}
+
+.error{
+    color:red;
+}
+
+.tweets-view{
+    height:30em; 
+    overflow-y: scroll;
+}
+
+.tweets-view::-webkit-scrollbar {
+    display: none; 
+}
+
+.cp-link:hover{
+    text-decoration:none;
+    cursor: pointer;
+}

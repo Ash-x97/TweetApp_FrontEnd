@@ -1,0 +1,36 @@
+<div class="container" *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+</div>
+
+<div class="jumbotron" *ngIf="!isLoading && serverErrorResponse">
+    <span class="help-block text-danger font-weight-bold"> {{ serverErrorResponse }} </span>
+</div>
+
+<div class="container" *ngIf="!isLoading && !serverErrorResponse ">
+    <div class="row" *ngIf="renderModel.length === 0">No Users !</div>      
+    <div class="row" *ngIf="renderModel.length>0 && !withModal">        
+        <div class="col-md-7 p-0 pb-5">
+            <router-outlet *ngIf="isItemSelected"></router-outlet>
+        </div>   
+        <div class="col-md-5 users-view">
+            <app-user-render  
+                *ngFor="let user of renderModel.reverse()"
+                [user]="user" 
+                (userSelected)="onSelectUser(user.username)" >                
+            </app-user-render>
+        </div>     
+    </div>
+    <div class="row" *ngIf="renderModel.length>0 && withModal">
+        <div class="col-md-12">          
+            <div class="backdrop" *ngIf="!isModalOpen">
+                <div class="modal-component">
+                    <router-outlet></router-outlet>
+                    <div class="mt-2" style="text-align: center;">
+                        <button (click)="onModalClose()" class="btn btn-info">Back</button>
+                    </div>
+                </div>                
+            </div>            
+        </div>
+    </div>
+</div>
+

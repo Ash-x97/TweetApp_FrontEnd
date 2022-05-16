@@ -1,0 +1,12 @@
+td,th{
+    border:none;
+}
+
+.user-tweets{
+    overflow-y:scroll;
+    height:40vh;
+}
+
+.user-tweets::-webkit-scrollbar {
+    display: none; 
+}

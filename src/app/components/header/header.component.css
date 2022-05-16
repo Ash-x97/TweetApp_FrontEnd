@@ -1,0 +1,15 @@
+
+.navbar-brand{
+    font-size:xx-large;
+}
+.user-search{
+    margin:auto 4vw auto 0vw;
+    margin-left:4vw;
+}
+.nav-item{
+    margin-left: 1vw;
+    font-size: large;
+}
+a.disabled{
+    color: antiquewhite;
+} 

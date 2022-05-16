@@ -1,0 +1,18 @@
+<div class="row ml-auto mr-auto" style="width:100%">
+    <div class="col-md-12" style="width:100%;">
+        <app-tweet-render                
+            *ngFor="let tweet of renderModel.reverse()"
+            [tweet]="tweet" 
+            (tweetSelected)="onSelectTweet(tweet.tweetId)">                
+        </app-tweet-render>
+
+        <div class="backdrop" *ngIf="isModalOpen">
+            <div class="modal-component">
+                <app-tweet-detail></app-tweet-detail>
+                <div class="mt-2" style="text-align: center;">
+                    <button (click)="onModalClose()" class="btn btn-info">Back</button>
+                </div>
+            </div>                
+        </div>            
+    </div>
+</div>

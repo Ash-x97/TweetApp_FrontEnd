@@ -1,0 +1,51 @@
+.error{
+    color:red;
+}
+
+.container-fluid{
+    background-color: rgba(0, 234, 255, 0.10);
+    width: 100%;
+}
+
+.felx-column{
+    align-content:flex-end;
+}
+
+.avatar{
+    max-height: 11vh;
+    max-width: 9vh;
+}
+
+.user-link:hover{
+    text-decoration: none;
+}
+
+.like-link:hover{
+    cursor:pointer;
+}
+
+.reply-input{
+    border: 0px;
+    background-color: rgb(192, 249, 242);
+}
+
+.sent-wrap{
+    background: transparent;
+    border: 0px;    
+}
+
+.reply-wrap{
+    border-bottom: 0.5px solid rgba(63, 63, 63,0.1);
+    padding-right:5px;
+}
+
+.reply-user:hover{
+    text-decoration: none;
+}
+
+.reply-container{
+    height:30vh; 
+    overflow-y: scroll;
+    overflow-block: none;
+}
+
