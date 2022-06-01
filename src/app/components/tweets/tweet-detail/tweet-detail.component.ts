@@ -156,17 +156,31 @@ export class TweetDetailComponent implements OnInit, OnDestroy {
       });
   }
 
-  userWithModal(){
+  userWithModal(type:string, loginId:string){
+    console.log(loginId)
     let user:User;
     this.isSecondaryLoading=true;
-    this._api.getUserDetailsByUsername(this.tweet.loginId).subscribe(
-      respUser=>{
-        user=Object.assign({},respUser);
-        this._user.selectUser(user);
-        this._user.activateModal();
-        this.isSecondaryLoading=false;
-        this.serverErrorResponse=null;        
-      }
-    );    
+    if(type ==='R'){
+      this._api.getUserDetailsByUsername(loginId).subscribe(
+        respUser=>{
+          user=Object.assign({},respUser);
+          this._user.selectUser(user);
+          this._user.activateModal();
+          this.isSecondaryLoading=false;
+          this.serverErrorResponse=null;        
+        }
+      );    
+    }
+    else{
+      this._api.getUserDetailsByUsername(loginId).subscribe(
+        respUser=>{
+          user=Object.assign({},respUser);
+          this._user.selectUser(user);
+          this._user.activateModal();
+          this.isSecondaryLoading=false;
+          this.serverErrorResponse=null;        
+        }
+      );   
+    }     
   }
 }

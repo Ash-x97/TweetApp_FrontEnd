@@ -11,7 +11,7 @@ import { ChangePasswordModel } from '../components/change-password/change-passwo
 
 @Injectable({providedIn: 'root'})
 export class ApiService {
-  baseUrl:string='https://localhost:44322/';
+  baseUrl:string="https://tweetappserver.azurewebsites.net/";//'https://localhost:44322/';
   isloggedIn:boolean=false;
 
   constructor(private _http:HttpClient, private _interComm:InterCommunicationService, private _auth:AuthService) { }

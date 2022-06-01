@@ -99,6 +99,9 @@ export class UsersComponent implements OnInit,OnDestroy {
   onModalClose(){
     this._user.deactivateModal();
     this.isModalOpen=!this.isModalOpen;
+    this._router.navigateByUrl('/users', { skipLocationChange: true }).then(() => {
+      this._router.navigate(['/home']);
+    });
   }
 
 }

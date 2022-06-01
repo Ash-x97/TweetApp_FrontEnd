@@ -4,7 +4,7 @@
             <img [src]="profilePic" alt="Pic" class="img-fluid rounded avatar" alt="[DelUser]">                    
         </div>
         <div class="d-flex flex-column mt-3 align-items-start" style="width:60%"> 
-            <p class="mt-auto mb-1 font-weight-bold"><a [routerLink]="['/users/'+tweet.loginId+'/detail']" (click)="userWithModal()" class="text-info user-link">@{{ tweet.loginId }}</a></p>
+            <p class="mt-auto mb-1 font-weight-bold"><a [routerLink]="['/users/'+tweet.loginId+'/detail']" (click)="userWithModal('T',tweet.loginId)" class="text-info user-link">@{{ tweet.loginId }}</a></p>
             <p class="mb-0 text-secondary">Posted {{ tweetSince }}</p>
             <p class="pt-0 text-secondary">on {{ tweet.createdTime | date:'medium' }}</p>
         </div>     
@@ -33,7 +33,7 @@
         </form>
         <div class="ml-5 pb-2 reply-container" *ngIf="replyRender.length > 0" >            
             <div class="d-flex flex-row pl-2 text-dark reply-wrap justify-content-between" *ngFor="let reply of replyRender.reverse()">
-                <p style="width:20%"><a [routerLink]="['/users/'+tweet.loginId+'/detail']" class="text-info reply-user">@{{reply.replier}}</a></p>
+                <p style="width:20%"><a [routerLink]="['/users/'+reply.replier+'/detail']" (click)="userWithModal('R',reply.replier)" class="text-info reply-user">@{{reply.replier}}</a></p>
                 <p class="text-dark font-weight-bold mr-auto" style="width:50%">{{reply.text}}</p>
                 <p class="text-secondary" style="width:30%">{{reply.timeSince}}</p>
             </div>

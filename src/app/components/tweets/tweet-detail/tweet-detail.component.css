@@ -49,3 +49,7 @@
     overflow-block: none;
 }
 
+.reply-container::-webkit-scrollbar {
+    display: none; 
+}
+
