@@ -14,7 +14,7 @@
         </div>   
         <div class="col-md-5 tweets-view">
             <app-tweet-render  
-                *ngFor="let tweet of renderModel.reverse()"
+                *ngFor="let tweet of renderModel"
                 [tweet]="tweet" 
                 (userSelected)="onSelectUser(tweet.loginId)" 
                 (tweetSelected)="onSelectTweet(tweet.tweetId)">
@@ -24,7 +24,7 @@
     <div class="row ml-auto mr-auto" *ngIf="renderModel.length>0 && withModal" style="width:100%">
         <div class="col-md-12" style=" width:100%;">
             <app-tweet-render                
-                *ngFor="let tweet of renderModel.reverse()"
+                *ngFor="let tweet of renderModel"
                 [tweet]="tweet" 
                 (userSelected)="onSelectUser(tweet.loginId)" 
                 (tweetSelected)="onSelectTweet(tweet.tweetId)">                

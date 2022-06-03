@@ -14,7 +14,7 @@
         </div>   
         <div class="col-md-5 users-view">
             <app-user-render  
-                *ngFor="let user of renderModel.reverse()"
+                *ngFor="let user of renderModel"
                 [user]="user" 
                 (userSelected)="onSelectUser(user.username)" >                
             </app-user-render>
